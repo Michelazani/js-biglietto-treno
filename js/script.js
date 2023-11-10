@@ -10,15 +10,19 @@ const agePassenger = parseInt ( prompt ('How old are you?')) ;
 
 const priceGas = 0.21 ; 
 
-const kmForPrice = (kmNumber * priceGas);
+let kmForPrice = (kmNumber * priceGas);
 
 const ageMinor = agePassenger < 18;
-const discountMinor = kmForPrice * 20 / 100;
+const discountMinor =  20 ;
 const ageOld = agePassenger > 65;
 const discountOld = 60;
 
 if (ageMinor) {
-    const discountTotMinor = parseInt (kmForPrice - ( kmForPrice * discountMinor / 100));
+    kmForPrice = kmForPrice - ( kmForPrice * discountMinor / 100);
+}
+else if (ageOld){
+    kmForPrice = kmForPrice - ( kmForPrice * discountOld / 100);
 }
 
-document.getElementById ('output') .innerHTML = 'the price is:' + kmNumber * priceGas + 'euro' ;
+kmForPrice = kmForPrice.toFixed(2)
+document.getElementById ('output') .innerHTML = 'the price is:' + kmForPrice
