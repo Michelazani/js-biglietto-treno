@@ -5,7 +5,7 @@
 // - va applicato uno sconto del 40% per gli over 65.
 
 
-const kmNumber = parseInt ( prompt ('How many km would you like to travel?')) ; 
+const kmNumber = parseFloat ( prompt ('How many km would you like to travel?')) ; 
 const agePassenger = parseInt ( prompt ('How old are you?')) ;
 
 const priceGas = 0.21 ; 
@@ -14,15 +14,16 @@ let kmForPrice = (kmNumber * priceGas);
 
 const ageMinor = agePassenger < 18;
 const discountMinor =  20 ;
-const ageOld = agePassenger > 65;
+const ageOld = agePassenger >= 65;
 const discountOld = 60;
 
-if (ageMinor) {
+if (ageMinor === true ) {
     kmForPrice = kmForPrice - ( kmForPrice * discountMinor / 100);
 }
-else if (ageOld){
+else if (ageOld === true){
     kmForPrice = kmForPrice - ( kmForPrice * discountOld / 100);
 }
 
-kmForPrice = kmForPrice.toFixed(2)
-document.getElementById ('output') .innerHTML = 'the price is:' + kmForPrice
+console.log(kmForPrice.toFixed(2)); 
+
+document.getElementById ('output') .innerHTML = 'the price is:' + kmForPrice.toFixed(2);
